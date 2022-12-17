@@ -23,7 +23,7 @@ const Product = (props) => {
             <span>{props.discount}% off</span>
           </div>
         </div>
-        <img src={`http://localhost:5000/Images/${props.img}`} />
+        <img src={`http://52.66.195.69:5000/Images/${props.img}`} />
         <button onClick={() => dispatch(addItem({ id: props.id, title: props.title, img: props.img, desc: props.desc, price: props.price }))} className="addBtn">
           ADD
         </button>
