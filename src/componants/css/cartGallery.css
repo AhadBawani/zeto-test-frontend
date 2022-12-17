@@ -1,0 +1,127 @@
+.cartGallery {
+     padding: 1rem;
+
+}
+
+.cartGallery>* {
+     margin: .5rem 0;
+}
+
+.cartGallery h4 {
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 21px;
+
+     color: #8D8B8B;
+}
+
+.cartGallery h1 {
+     font-weight: 500;
+     font-size: 16px;
+     line-height: 24px;
+     color: #353434;
+}
+
+.checkoutBtn {
+     width: 223px;
+     height: 34px;
+     background: #FF1D1D;
+     border-radius: 32px;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 24px;
+     /* identical to box height */
+     color: #FFFFFF;
+}
+
+.checkoutBtn span:last-child {
+     display: flex;
+     align-items: center;
+}
+
+.checkoutBtn img {
+     width: 24px;
+     height: 21px;
+}
+
+
+
+
+.sidebar_cart_card {
+     margin: 1rem 0.5rem;
+     width: 100%;
+     height: 60px;
+     display: grid;
+     grid-template-columns: 15% 60% 20%;
+     border-bottom: 1px solid #CBC5C5;
+     padding: 1rem 0;
+}
+
+.sidebar_cart_card img {
+     width: 32px;
+     height: 40px;
+     left: 1032px;
+     top: 196px;
+     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 8px;
+
+}
+
+.cartCartDetail {
+     width: 134%;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     overflow: hidden;
+     white-space: nowrap;
+}
+
+.cartCartDetail>span {
+     font-weight: 300;
+     font-size: 12px;
+     line-height: 18px;
+}
+
+.sidebar_cart_detail>span {
+     font-weight: 300;
+     font-size: 12px;
+     line-height: 18px;
+}
+
+.sidebar_cart_detail>strong {
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 21px;
+}
+
+.cart_product_quantity {
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.cart_product_quantity .increment {
+     width: 56px;
+     height: 20px;
+     background: #F7F7F7;
+     border: 1px solid #FFFFFF;
+     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 32px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.cart_product_quantity .increment img {
+     width: 20px;
+     height: 20px;
+     background: #FFFFFF;
+     border: 1px solid rgba(73, 71, 71, 0.8);
+     border-radius: 50%;
+     padding: 2px;
+     cursor: pointer;
+}
