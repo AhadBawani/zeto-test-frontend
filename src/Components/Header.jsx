@@ -13,7 +13,7 @@ import { UserAction } from "../Redux/Actions/Actions";
 import { SignUpDialogAction, SignUpBtnAction } from "../Redux/Actions/Actions";
 const Header = () => {
   const [hamburger, setHamburger] = useState(true);
-  const [navUser, setNavUser] = useState(false);
+  const [navUser, setNavUser] = useState(true);
   const [query, setquery] = useState("");
   const [quantity, setQuantity] = useState();
   const Products = useSelector((state) => state.Products?.Products) || [];
