@@ -5,7 +5,12 @@ import { Link } from "react-scroll";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../Components/Header";
 import SignUpDialog from "../Components/SignUpDialog";
-import { ProductsAction, UserCartAction, CategoryToggleBtnAction, UserLocalCartAction } from "../Redux/Actions/Actions";
+import {
+  ProductsAction,
+  UserCartAction,
+  CategoryToggleBtnAction,
+  UserLocalCartAction,
+} from "../Redux/Actions/Actions";
 import UserRequests from "../Requests/UserRequests";
 import arrowR from "../icons/arrowR.png";
 import menu from "../icons/menu.svg";
@@ -21,55 +26,55 @@ const Home = () => {
   const user = useSelector((state) => state?.User?.user);
   const Products = useSelector((state) => state.Products?.Products) || [];
   const SignUpPopUp = useSelector((state) => state?.Toggle?.SignUpDialog);
-  const categoryToggle = useSelector(state => state?.Toggle?.CategoryPopUp)
-  let userCart = localStorage.getItem('usercart');
-  useEffect(() => {    
+  const categoryToggle = useSelector((state) => state?.Toggle?.CategoryPopUp);
+  let userCart = localStorage.getItem("usercart");
+  useEffect(() => {
     if (!user) {
-
       if (!(userCart == null || userCart.length == 0)) {
         let arr = [];
-        let userCart = JSON.parse(localStorage.getItem('usercart'));
+        let userCart = JSON.parse(localStorage.getItem("usercart"));
         userCart.map((item) => {
           let obj = {
             productId: item?.productId,
             quantity: item?.quantity,
-            price: item?.price
-          }
+            price: item?.price,
+          };
           arr.push(obj);
-        })
+        });
         dispatch(UserLocalCartAction(arr));
       }
     }
   }, []);
 
-  // useLayoutEffect(() => {  
+  // useLayoutEffect(() => {
   // }, [user])
 
   useEffect(() => {
     if (user) {
       if (!(userCart == null || userCart.length == 0)) {
-        let userCart = JSON.parse(localStorage.getItem('usercart'));
+        let userCart = JSON.parse(localStorage.getItem("usercart"));
         userCart.map((item) => {
           let obj = {
             userId: user?._id,
             productId: item?.productId,
-            quantity: item?.quantity
-          }
-          axios.post(UserRequests.ADD_TO_CART, obj)
-            .then(response => {
+            quantity: item?.quantity,
+          };
+          axios
+            .post(UserRequests.ADD_TO_CART, obj)
+            .then((response) => {
               axios
                 .get(UserRequests.GET_USER_CART + user?._id)
                 .then((response) => {
                   dispatch(UserCartAction(response.data?.cart));
-                  localStorage.removeItem('usercart');
-                  dispatch(UserLocalCartAction(null))
+                  localStorage.removeItem("usercart");
+                  dispatch(UserLocalCartAction(null));
                 })
-                .catch((error) => { });
+                .catch((error) => {});
             })
-            .catch(error => {
+            .catch((error) => {
               console.log(error);
-            })
-        })        
+            });
+        });
       }
     }
   }, [user]);
@@ -79,6 +84,13 @@ const Home = () => {
     if (UniqueCategory.includes(item.category)) return null;
     return UniqueCategory.push(item.category);
   });
+  const filterData = (product, category) => {
+    return product.filter((i) => {
+      return i.category == category;
+    });
+  };
+ 
+
   return (
     <>
       <div className="Homapage">
@@ -92,7 +104,11 @@ const Home = () => {
                 <span>(we deliver same day)</span>
               </div>
               <div className="main__category">
-                <img onClick={() => dispatch(CategoryToggleBtnAction(true))} src={menu} alt="" />
+                <img
+                  onClick={() => dispatch(CategoryToggleBtnAction(true))}
+                  src={menu}
+                  alt=""
+                />
                 <img src={arrowL} alt="p" />
                 <div className="main__slider" ref={ref}>
                   {UniqueCategory.map((item) => {
@@ -125,7 +141,9 @@ const Home = () => {
                       <span>Fresh vegetables for good health.</span>
                     </div>
                     <div className="product_category_gallery">
-                      <ProductCard />
+                      {filterData(Products, i).map((product) => {
+                       return <ProductCard cartData = {product}/>;
+                      })}
                     </div>
                   </>
                 );
