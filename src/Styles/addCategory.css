@@ -1,0 +1,20 @@
+
+.add-category> select,
+input,
+option,select {
+  margin: 0.5rem 0;
+  margin-right: 0.5rem;
+  width: 15rem !important;
+  color: black !important;
+}
+.add-category .addBtn {
+    cursor: pointer;
+    color: white !important;
+  width: 8rem;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  background: red;
+  border-radius: 5px;
+  height: 3rem;
+}
